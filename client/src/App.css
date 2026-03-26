@@ -4,36 +4,6 @@
   height: 100vh;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: white;
-  border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-  font-size: 1.5rem;
-  color: #333;
-}
-
-.status {
-  font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.status.connected {
-  color: #4caf50;
-}
-
-.status.disconnected {
-  color: #f44336;
-}
-
 main {
   flex: 1;
   overflow: hidden;
@@ -41,6 +11,7 @@ main {
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  background-color: #f5f5f5;
 }
 
 .editor-container {
@@ -63,8 +34,27 @@ main {
   font-size: 1rem;
   line-height: 1.6;
   color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .editor:focus {
   background-color: #fafafa;
+}
+
+/* Scrollbar styling */
+.editor::-webkit-scrollbar {
+  width: 8px;
+}
+
+.editor::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.editor::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.editor::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

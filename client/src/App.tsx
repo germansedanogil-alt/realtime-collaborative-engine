@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import Header from './components/Header'
+import Toolbar from './components/Toolbar'
 import './App.css'
 
 function App() {
   const [connected, setConnected] = useState(false)
-  const [message, setMessage] = useState('')
+  const [userCount, setUserCount] = useState(0)
+  const editorRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     // TODO: Conectar con WebSocket del servidor
@@ -12,16 +15,22 @@ function App() {
 
   return (
     <div className="app">
-      <header>
-        <h1>Editor Colaborativo</h1>
-        <div className={`status ${connected ? 'connected' : 'disconnected'}`}>
-          {connected ? '🟢 Conectado' : '🔴 Desconectado'}
-        </div>
-      </header>
+      <Header 
+        title="Editor Colaborativo" 
+        connected={connected} 
+        userCount={userCount}
+      />
+
       <main>
         <div className="editor-container">
+          <Toolbar editorRef={editorRef} />
           {/* TODO: Implementar editor con Yjs */}
-          <div contentEditable className="editor">
+          <div 
+            ref={editorRef}
+            contentEditable 
+            className="editor"
+            suppressContentEditableWarning
+          >
             Escribe aquí...
           </div>
         </div>
